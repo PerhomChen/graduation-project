@@ -1,4 +1,4 @@
-# graduation-project
+#  Web网上商城
 这是本人的毕业设计，是一个Web网上商城项目
 
 
