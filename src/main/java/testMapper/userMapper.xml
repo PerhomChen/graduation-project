@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test">
+    <!--通过id查询用户表的信息，-->
+    <!--通过select来查询-->
+    <!--id：表示文件中的sql（因为最底层的封装对象是语句对象）-->
+    <!--parameterType::指定输入参数的类型-->
+    <!--#{}表示一个占位符-->
+    <!--#{id}：id表示接收输入的参数，参数名就是id，如果输入的是简单类型，那个#{}可以任意
+        resultType：：指定输出结果的类型-->
+    <select id="findAllUser" parameterType="int" resultType="testMapper.pojo.User">
+        select  * from l_user where uid =#{uid}
+    </select>
+
+    <!--模糊查询-->
+    <!--${value}$::表示拼接字符串-->
+    <!--会引起sql注入-->
+    <!--${value}$：如果是简单类型只能使用value不建议使用-->
+    <select id="findAllUserByName" parameterType="java.lang.String" resultType="testMapper.pojo.User">
+        select * from l_user WHERE username like '%${value}%'
+    </select>
+
+    <insert id="insertUser" parameterType="testMapper.pojo.User" >
+        /*keyProperty : 将查询到的主键值设置到parameterType指定的对象的哪个属性
+        order：：相对于insert语句的执行顺序
+        */
+      <selectKey keyProperty="uid" order="AFTER" resultType="Integer">
+          SELECT LAST_INSERT_ID();
+      </selectKey>
+        INSERT INTO l_user (username,password,phone,mail,age,gender,address) VALUES (#{username},
+        #{password},#{phone},#{mail},#{age},#{gender},#{address})
+
+    </insert>
+    <delete id="deleteUserById" parameterType="Integer">
+        delete from l_user where uid =#{uid}
+    </delete>
+    <!--id必须存在-->
+    <update id="updateUserById" parameterType="testMapper.pojo.User">
+        update l_user set username=#{username},password=#{password},phone=#{phone},mail=#{mail},age=#{age},
+        gender=#{gender},address=#{address} where uid=#{uid}
+    </update>
+</mapper>

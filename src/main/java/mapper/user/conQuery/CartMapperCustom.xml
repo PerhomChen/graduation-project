@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.user.conQuery.CartMapperCustom">
+
+
+
+  <resultMap id="CartCustomBaseResultMap" type="entity.user.queryVo.CartCustom" extends="mapper.user.CartMapper.CartBaseResultMap">
+
+      <association property="goods" javaType="entity.user.Goods">
+          <!--id：关联查询用户的唯一标识-->
+          <id column="good_id" jdbcType="INTEGER" property="goodId" />
+          <result column="detail" jdbcType="VARCHAR" property="detail" />
+          <result column="pic" jdbcType="VARCHAR" property="pic" />
+          <result column="price" jdbcType="DOUBLE" property="price" />
+          <result column="size" jdbcType="INTEGER" property="size" />
+          <result column="type" jdbcType="VARCHAR" property="type" />
+          <result column="good_name" jdbcType="VARCHAR" property="goodName" />
+          <result column="ex_number" jdbcType="INTEGER" property="exNumber" />
+          <result column="sa_number" jdbcType="INTEGER" property="saNumber" />
+      </association>
+  </resultMap>
+
+<!--sql片段-->
+  <!--使用动态sql，通过id判断，满足条件进行sql拼接-->
+ <!-- <sql id="query_goods_where">
+<if test="goodsCustom!=null">
+  <if test="goodsCustom.goodName!=null and goodsCustom.goodName!=''">
+    good_name LIKE '%${goodsCustom.goodName}%'
+  </if>
+</if>
+
+  </sql>-->
+
+  <!--商品列表查询-->
+ <!-- <select id="findGoodsList" parameterType="entity.user.queryVo.GoodsQueryVo" resultMap="BaseResultMap">
+    SELECT * FROM l_goods
+     <where>
+      <include refid="query_goods_where"></include>
+     </where>
+  </select>-->
+
+    <!--查询用户购物车-->
+    <select id="selectUserCart" parameterType="Integer" resultMap="CartCustomBaseResultMap">
+SELECT
+l_cart.*,
+l_goods.price,
+l_goods.size,
+l_goods.type,
+l_goods.pic,
+l_goods.detail,
+l_goods.good_name
+FROM
+l_cart,
+l_goods
+WHERE l_cart.good_id = l_goods.good_id AND l_cart.u_id=#{uid}  ORDER BY createtime;
+    </select>
+
+
+    <select id="selectUserCartByCartId" parameterType="Integer" resultMap="CartCustomBaseResultMap">
+SELECT
+l_cart.good_num,
+l_cart.good_id,
+l_goods.ex_number,
+l_goods.size,
+l_goods.price
+FROM
+l_cart ,
+l_goods
+WHERE l_cart.good_id = l_goods.good_id AND l_cart.cart_id=#{cartId}  ;
+    </select>
+</mapper>

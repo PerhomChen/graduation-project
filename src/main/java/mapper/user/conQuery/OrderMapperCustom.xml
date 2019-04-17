@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.user.conQuery.OrderMapperCustom">
+
+
+
+  <resultMap id="SelectOrderCustomBaseResultMap" type="entity.user.queryVo.OrderCustom" extends="mapper.user.OrderMapper.BaseResultMap">
+
+      <collection property="detailCustomList" ofType="entity.user.queryVo.DetailCustom">
+          <id column="detail_id" jdbcType="INTEGER" property="detailId" />
+          <result column="order_id" jdbcType="INTEGER" property="orderId" />
+          <result column="good_id" jdbcType="INTEGER" property="goodId" />
+          <association property="goods" javaType="entity.user.Goods" >
+
+              <id column="good_id" jdbcType="INTEGER" property="goodId" />
+              <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+              <result column="detail" jdbcType="VARCHAR" property="detail" />
+              <result column="pic" jdbcType="VARCHAR" property="pic" />
+              <result column="price" jdbcType="DOUBLE" property="price" />
+              <result column="size" jdbcType="INTEGER" property="size" />
+              <result column="ex_number" jdbcType="INTEGER" property="exNumber" />
+              <result column="sa_number" jdbcType="INTEGER" property="saNumber" />
+              <result column="type" jdbcType="VARCHAR" property="type" />
+              <result column="good_name" jdbcType="VARCHAR" property="goodName" />
+
+          </association>
+      </collection>
+  </resultMap>
+
+
+
+<!--
+    &lt;!&ndash;查询用户购物车&ndash;&gt;
+    <select id="selectUserCart" parameterType="Integer" resultMap="CartCustomBaseResultMap">
+SELECT
+l_cart.*,
+l_goods.price,
+l_goods.size,
+l_goods.type,
+l_goods.pic,
+l_goods.detail,
+l_goods.good_name
+FROM
+l_cart,
+l_goods
+WHERE l_cart.good_id = l_goods.good_id AND l_cart.u_id=#{uid}  ORDER BY createtime;
+    </select>-->
+
+    <!--插入订单-->
+   <!-- <insert id="insertOrder" useGeneratedKeys="true" keyProperty="orderId"  parameterType="entity.user.queryVo.OrderCustom" >
+
+INSERT INTO l_order (u_id,status,location_id,size,destination)
+VALUES(#{uid},#{status},#{locationId},#{size},#{destination});
+
+    </insert>-->
+
+    <insert id="insertOrderDetail" parameterType="java.util.List">
+        INSERT INTO l_detail (order_id,good_id,good_num) VALUES
+
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.orderId},
+            #{item.goodId},
+            #{item.goodNum}
+            )
+        </foreach>
+
+    </insert>
+
+    <select id="selectOrderByUid" parameterType="Integer" resultType="entity.user.Order">
+        SELECT * FROM l_order WHERE u_id = #{uid};
+    </select>
+
+<!--insert into fund
+    			( id,fund_name,fund_code,date_x,data_y,create_by,create_date,update_by,update_date,remarks,del_flag)
+    			values
+    			<foreach collection="list" item="item" index="index" separator=",">
+    				(
+    					#{item.id},
+    					#{item.fundName},
+    					#{item.fundCode},
+    					#{item.dateX},
+    					#{item.dataY},
+    					#{item.createBy},
+    					#{item.createDate},
+    					#{item.updateBy},
+    					#{item.updateDate},
+    					#{item.remarks},
+    					#{item.delFlag}
+    				)
+    		     </foreach>
+-->
+    <!--删除订单-->
+</mapper>

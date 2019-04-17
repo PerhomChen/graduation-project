@@ -1,0 +1,259 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>login</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#wrap {
+			height: 630px;
+			width: 1358px;
+			background-image: url(../images/login/5.jpg);
+			background-repeat: no-repeat;
+			background-position: center center;
+			position: relative;
+		}
+		#head {
+			height: 65px;
+			width: 1358px;
+
+			text-align: center;
+			position: relative;
+		}
+		#foot {
+			width: 1358px;
+			height: 76px;
+			background-color: #CC9933;
+			position: relative;
+		}
+		#wrap .logGet {
+			height: 408px;
+			width: 368px;
+			position: absolute;
+			background-color: #FFFFFF;
+			top: 25%;
+			right: 4%;
+		}
+		.logC a button {
+			width: 100%;
+			height: 45px;
+			background-color: #ee7700;
+			border: none;
+			color: white;
+			font-size: 18px;
+		}
+		.logGet .logD.logDtip .p1 {
+			display: inline-block;
+			font-size: 28px;
+			margin-top: 30px;
+			width: 86%;
+		}
+		#wrap .logGet .logD.logDtip {
+			width: 86%;
+			border-bottom: 1px solid #ee7700;
+			margin-bottom: 60px;
+			margin-top: 0px;
+			margin-right: auto;
+			margin-left: auto;
+		}
+		.logGet .lgD img {
+			position: absolute;
+			top: 12px;
+			left: 8px;
+		}
+		.logGet .lgD input {
+			width: 100%;
+			height: 42px;
+			text-indent: 2.5rem;
+		}
+		#wrap .logGet .lgD {
+			width: 86%;
+			position: relative;
+			margin-bottom: 30px;
+			margin-top: 30px;
+			margin-right: auto;
+			margin-left: auto;
+		}
+		#wrap .logGet .logC {
+			width: 86%;
+			margin-top: 0px;
+			margin-right: auto;
+			margin-bottom: 0px;
+			margin-left: auto;
+		}
+
+
+		.title {
+			font-family: "微软雅黑";
+			color: #FFFFFF;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);  /* 使用css3的transform来实现 */
+			font-size: 36px;
+			height: 40px;
+			width: 30%;
+		}
+
+		.copyright {
+			font-family: "微软雅黑";
+			color: #FFFFFF;
+			position: absolute;
+			top: 30%;
+			left: 50%;
+			transform: translate(-50%, -50%);  /* 使用css3的transform来实现 */
+			height: 60px;
+			width: 40%;
+			text-align:center;
+		}
+
+		.copyright .foot_list1{
+			width: 100%;
+			height: 24px;
+			position: relative;
+		}
+		.copyright .foot_list2{
+			width: 130%;
+			height: 24px;
+			vertical-align: middle;
+		}
+		.copyright .foot_list2 .foot-img{
+
+			width: 26px;
+			height: 26px;
+			color: #FFFFFF;
+
+
+		}
+		/*#foot .copyright .img {
+			width: 100%;
+			height: 24px;
+			position: relative;
+		}
+		.copyright .img .icon {
+			display: inline-block;
+			width: 24px;
+			height: 24px;
+			margin-left: 22px;
+			vertical-align: middle;
+			background-image: url(../images/login/login-icon.png);
+			background-repeat: no-repeat;
+			vertical-align: middle;
+			margin-right: 5px;
+		}
+
+		.copyright .img .icon1 {
+			display: inline-block;
+			width: 24px;
+			height: 24px;
+			margin-left: 22px;
+			vertical-align: middle;
+			background-image: url(../images/login/login-icon1.png);
+			background-repeat: no-repeat;
+			vertical-align: middle;
+			margin-right: 5px;
+		}
+		.copyright .img .icon2 {
+			display: inline-block;
+			width: 24px;
+			height: 24px;
+			margin-left: 22px;
+			vertical-align: middle;
+			background-image: url(../images/login/login-icon2.png);
+			background-repeat: no-repeat;
+			vertical-align: middle;
+			margin-right: 5px;
+		}*/
+		#foot .copyright p {
+			height: 24px;
+			width: 100%;
+		}
+	</style>
+</head>
+
+<body >
+<script src="../js/jquery3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.1/jquery.form.min.js"></script>
+
+<div class="wrap" id="wrap">
+	<div class="header" id="head">
+		<div class="title">欢迎登录xyz商城</div>
+
+	</div>
+	<div class="logGet">
+		<!-- 头部提示信息 -->
+		<div class="logD logDtip">
+			<p class="p1">登录</p>
+		</div>
+		<!-- 输入框 -->
+		<!--/ssm_war_exploded/goods/getUser.action-->
+<form action="/ssm_war_exploded/goods/queryGood.action" method="post" id="login-form"
+	  name="login-form">
+		<div class="lgD">
+			<img src="../images/login/logName.png" width="20" height="20" alt=""/>
+			<input type="text" name="username" id="username"
+				   placeholder="输入用户名" />
+		</div>
+		<div class="lgD">
+			<img src="../images/login/logPwd.png" width="20" height="20" alt=""/>
+			<input type="password" name="password" id="password"
+				   placeholder="输入用户密码" />
+		</div>
+
+		<div class="logC">
+			<a ><button type="submit" id="submitId" >登 录</button></a>
+		</div>
+</form>
+	</div>
+</div>
+<script language="javascript">
+	document.getElementById('username').focus();
+	<!--设置id为name的元素得到焦点-->
+</script>
+<script>
+
+
+
+$("#login-form").submit(function(){
+	var username = $("#username").val()
+	var password = $("#password").val()
+	console.log(username,password)
+	if(username==""|username==null){
+		alert("用户名不能为空！");
+		return false
+	}
+	if (password==""|username==null){
+		alert("密码不能为空！");
+		return false
+
+	}
+	$(this).ajaxSubmit({
+		success: function (res) {
+			alert(res)
+
+		}
+	})
+})
+
+
+</script>
+<div class="footer" id="foot">
+	<div class="copyright">
+		<p>Copyright © 2018 Qunar.com Inc. All Rights Reserved.</p>
+		<div class="foot_list1">&nbsp;&nbsp;联系邮箱&nbsp;&nbsp;|&nbsp;&nbsp;联系地址&nbsp;&nbsp;|&nbsp;&nbsp;联系电话&nbsp;&nbsp;|&nbsp;&nbsp;常见问题&nbsp;&nbsp;</div>
+		<div class="foot_list2">
+			小米公司版权所有-京ICP备10046444-京公网 <img class="foot-img" src="../images/login/logo.png"><span>  安备11010802020134号-京ICP证110507号</span>
+		</div>
+
+
+
+	</div>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+
+
+<base href="<%=basePath%>">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小艾账号-登陆</title>
+    <link rel="shortcut icon" href="../images/land/logoAi.png">
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="../js/jquery3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.1/jquery.form.min.js"></script>
+</head>
+<body>
+<!--   首部-->
+    <div id="main">
+       <div id="main_1">
+           <div class="logo">
+               <img src="../images/land/logoAi.png">
+           </div>
+           <div class="land_header" >
+               <p>小艾账号登录</p>
+           </div>
+           <form   id="login-form"   >
+              <input id="user_name" type="text" name="phone" required placeholder="  手机号码 ">
+                    
+                <input id="password" type="password" name="password" required placeholder="   密码" pattern="[0-9]{8}">
+                <input id="land_button" type="submit" value="立即登陆" />
+           </form>
+           <script>
+
+           /*    $("#login-form").submit(function(){
+                   $(this).ajaxSubmit({
+                       success: function (res) {
+                           alert(res)
+
+                       }
+                   })
+               })
+*/
+               /*function loginJson() {
+                   $.ajax({
+                       type:'post',
+                       url:'/ssm_war_exploded/user/login',
+                       contentType:'application/json;charset-utf-8',
+                       data:$("#login-form").serialize(),
+
+                       success:function (data) {//返回json结果
+
+                           alert(data);
+                       }
+                   });
+               }
+*/
+           $("#login-form").submit(function() {
+               alert("进入方法"),
+
+               $.ajax({
+
+                   contentType: "application/json;charset=UTF-8",
+                   url : 'user/login',
+                   data:{"phone":$("#phone"),"password":$("#password")},
+              /*     dataType:'json',*/
+                /*   contentType : "application/json;charsetset=UTF-8",*/
+                   success : function(data) {
+                   /*    if (data.code == 1) {
+                           window.location.href = "index.html";
+                       } else {
+                           $(".yanzhengma").val("");
+                           $("#codeImage").attr("src", "/xiaomisys/createCode?id=" + Math.random());
+                           alert(data.info);
+                       }*/
+                   alert(data);
+                   },
+                   error : function() {
+                       alert("ajax错误");
+                   }
+               })
+           })
+           </script>
+
+                <div>
+                   <p  id="otherway_land">———————其他方式登陆———————</p>
+                </div>
+                <div id="land_qq_sina_pay">
+                   <a href="https://graph.qq.com/oauth/show?which=Login&display=pc&response_type=code&client_id=100284651&redirect_uri=https://account.xiaomi.com/pass/sns/login/load&state=7b22736964223a226d695f6573686f70222c226c6f63616c65223a227a685f434e222c2263616c6c6261636b223a22687474702533412532462532466f726465722e6d692e636f6d2532466c6f67696e25324663616c6c6261636b253346666f6c6c6f777570253344687474702532353341253235324625323532467777772e6d692e636f6d25323532462532367369676e2533444e5755344d7a526d4e6a42685a6d55344d44526d4e6d5a6b597a566a4d545a684d47566c4d47466d4d546c6c4d4759305a544e685a51253243253243222c226170706964223a22313030323834363531227d" target="_blank">
+                       <img class="logo_land" src="../images/land/qqlogo.jpg">
+                   </a>
+                   <a href="https://api.weibo.com/oauth2/authorize?response_type=code&client_id=2996826273&redirect_uri=https://account.xiaomi.com/pass/sns/login/load&state=7b22736964223a226d695f6573686f70222c226c6f63616c65223a227a685f434e222c2263616c6c6261636b223a22687474702533412532462532466f726465722e6d692e636f6d2532466c6f67696e25324663616c6c6261636b253346666f6c6c6f777570253344687474702532353341253235324625323532467777772e6d692e636f6d25323532462532367369676e2533444e5755344d7a526d4e6a42685a6d55344d44526d4e6d5a6b597a566a4d545a684d47566c4d47466d4d546c6c4d4759305a544e685a51253243253243222c226170706964223a2232393936383236323733227d" target="_blank">
+                       <img class="logo_land" src="../images/land/sinalogo.jpg">
+                   </a>
+                   <a href="https://auth.alipay.com/login/express.htm?goto=https%3A%2F%2Fmemberexprod.alipay.com%3A443%2Fauthorize%2FuserAuthQuickLoginAction.htm%3Fe_i_i_d%3Df3d8ff9a751ba4ab0b3151b3553b1006" target="_blank">
+                       <img class="logo_land" src="../images/land/paylogo.jpg">
+                   </a>
+               </div>
+               <div id="enroll_resetpassword">
+                   <a href="../mi_enroll/enroll.html" target="_self">
+                       <p id="enroll">注册小艾账号 &nbsp;</p>
+                   </a>
+                   <a href="../mi_reset/resetpassword.html" target="_self">
+                       <p >| &nbsp; &nbsp;忘记密码</p>
+                   </a>
+               </div>
+
+           
+       </div>
+<!--       尾部-->
+       <div id="foot">
+           <div class="foot_list">&nbsp;&nbsp;简体&nbsp;&nbsp;|&nbsp;&nbsp;繁体&nbsp;&nbsp;|&nbsp;&nbsp;English&nbsp;&nbsp;|&nbsp;&nbsp;常见问题&nbsp;&nbsp;</div>
+           
+       </div>
+       
+        
+    </div>
+<canvas id="Mycanvas"></canvas>
+<script>
+	var WIDTH = window.innerWidth, HEIGHT = window.innerHeight, POINT = 35;
+	var canvas = document.getElementById('Mycanvas');
+	canvas.width = WIDTH,
+	canvas.height = HEIGHT;
+	var context = canvas.getContext('2d');
+	context.strokeStyle = 'rgba(0,0,0,0.1)',
+	context.strokeWidth = 1,
+	context.fillStyle = 'rgba(0,0,0,0.1)';
+	var circleArr = [];
+
+	
+    function Line (x, y, _x, _y, o) {
+		this.beginX = x,
+		this.beginY = y,
+		this.closeX = _x,
+		this.closeY = _y,
+		this.o = o;
+	}
+	
+    function Circle (x, y, r, moveX, moveY) {
+		this.x = x,
+		this.y = y,
+		this.r = r,
+		this.moveX = moveX,
+		this.moveY = moveY;
+	}
+	
+    function num (max, _min) {
+		var min = arguments[1] || 0;
+		return Math.floor(Math.random()*(max-min+1)+min);
+	}
+	
+    function drawCricle (cxt, x, y, r, moveX, moveY) {
+		var circle = new Circle(x, y, r, moveX, moveY)
+		cxt.beginPath()
+		cxt.arc(circle.x, circle.y, circle.r, 0, 2*Math.PI)
+		cxt.closePath()
+		cxt.fill();
+		return circle;
+	}
+	
+    function drawLine (cxt, x, y, _x, _y, o) {
+		var line = new Line(x, y, _x, _y, o)
+		cxt.beginPath()
+		cxt.strokeStyle = 'rgba(0,0,0,'+ o +')'
+		cxt.moveTo(line.beginX, line.beginY)
+		cxt.lineTo(line.closeX, line.closeY)
+		cxt.closePath()
+		cxt.stroke();
+
+	}
+	
+    function init () {
+		circleArr = [];
+		for (var i = 0; i < POINT; i++) {
+			circleArr.push(drawCricle(context, num(WIDTH), num(HEIGHT), num(15, 2), num(10, -10)/40, num(10, -10)/40));
+		}
+		draw();
+	}
+
+	function draw () {
+		context.clearRect(0,0,canvas.width, canvas.height);
+		for (var i = 0; i < POINT; i++) {
+			drawCricle(context, circleArr[i].x, circleArr[i].y, circleArr[i].r);
+		}
+		for (var i = 0; i < POINT; i++) {
+			for (var j = 0; j < POINT; j++) {
+				if (i + j < POINT) {
+					var A = Math.abs(circleArr[i+j].x - circleArr[i].x),
+						B = Math.abs(circleArr[i+j].y - circleArr[i].y);
+					var lineLength = Math.sqrt(A*A + B*B);
+					var C = 1/lineLength*7-0.009;
+					var lineOpacity = C > 0.03 ? 0.03 : C;
+					if (lineOpacity > 0) {
+						drawLine(context, circleArr[i].x, circleArr[i].y, circleArr[i+j].x, circleArr[i+j].y, lineOpacity);
+					}
+				}
+			}
+		}
+	}
+
+	window.onload = function () {
+		init();
+		setInterval(function () {
+			for (var i = 0; i < POINT; i++) {
+				var cir = circleArr[i];
+				cir.x += cir.moveX;
+				cir.y += cir.moveY;
+				if (cir.x > WIDTH) cir.x = 0;
+				else if (cir.x < 0) cir.x = WIDTH;
+				if (cir.y > HEIGHT) cir.y = 0;
+				else if (cir.y < 0) cir.y = HEIGHT;
+				
+			}
+			draw();
+		}, 16);
+	}
+
+</script>
+</body>
+</html>

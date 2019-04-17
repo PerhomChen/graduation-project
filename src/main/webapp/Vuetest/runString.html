@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+</head>
+<body>
+
+<div id="app">
+    <input type="button" value="滚动" @click="lang">
+    <input type="button" value="停止" @click="stop">
+    <h4>{{msg}}</h4>
+</div>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            msg:'社会主义核心价值观！！',
+           //设置定时器的id
+            interValId : null
+        },
+        methods:{
+           lang(){
+               console.log("jkkk")
+               if(this.intervalId!=null) return;
+               this.intervalId = setInterval(() =>  {
+                   var start = this.msg.substring(0, 1)
+
+                   var end = this.msg.substring(1)
+
+                   this.msg = end + start
+               },400)
+           },
+            stop(){
+               clearInterval(this.intervalId)
+                this.intervalId = null
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

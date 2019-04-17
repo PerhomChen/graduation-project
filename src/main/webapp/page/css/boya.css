@@ -1,0 +1,208 @@
+@charset "utf-8";
+*{
+	margin:0;
+	padding:0;
+	list-style:none;
+	text-decoration:none;
+}
+.container{
+ 	width: 1264px;
+	margin: 0 auto;
+}
+.container .logo{
+	width: 1248px;
+	height: 60px;
+	background: #191d3a;
+}
+
+.container .logo img{
+	margin:0px 0 0 168px;
+}
+
+.logo ul{
+	float: right;
+	width: 800px;
+	height: 50px;
+}
+.logo ul li{
+	float: left;
+	font-size: 14px;
+	line-height: 54px;
+	padding: 8px;
+}
+.logo ul li a{
+	margin: 8px;
+	color:#748496;
+}
+.logo ul .join{
+	width: 100px;
+	height: 34px;
+	background: #38b774;
+	border-radius:10px;
+	margin: 18px 0 0 48px;
+}
+.logo ul .join i{
+	float: left;
+	margin: -18px 0 0 12px;
+	font-size: 14px;
+	color: #f2edb0;
+}
+
+/*.logo ul .join{
+	width: 96px;
+	height: 20px;
+	text-align: center;
+	margin:14px 0 10px 0; 
+}
+.logo ul .join img{
+	text-align: center;
+	margin: 0 0 12px 22px;
+}*/
+.main .scc{
+	float: left;
+	width:1248px; 
+	height:478px;
+	margin: -10px 0 0 0;
+	/*margin: 0 auto;*/
+	/*border: 1px solid #000;*/
+}
+.main .scc img{
+	float: left;
+	width:1248px; 
+	height:478px;
+}
+.main .four{
+	margin:10px;
+	width: 1248px;
+	height:290px;
+/*	border: 1px solid pink;*/
+}
+.main .four ul{
+	float:left;
+}
+.main .four ul li{
+	float: left;
+	margin: 40px;
+	text-align: center;
+
+}
+.main .four ul li img{
+	width: 224px;
+	height: 126px;
+}
+.main .four ul li p{
+	font-size: 16px;
+
+}
+.main .four ul li span{
+	font-size: 12px;
+	color: #38b774;
+}
+.main .four ul li i{
+	color:  #38b774;
+}
+/*.main .four ul img{
+	float: left;
+	width: 12px;
+	height: 12px;
+	border: 1px solid #000;
+	margin: 0 0 0 0;
+}*/
+.main .gpp{
+	display: block;
+	margin:-54px 0 0 0;
+}
+
+.mid{
+	width:1248px; 
+	height:420px;
+	/*border: 1px solid pink;*/
+}
+.mid .lf{
+	float: left;
+	width: 500px;
+	height: 314px;
+	border: 1px solid #fff;
+	margin:50px 50px 50px 140px;
+	background: url(../images/home/bynewsbg.jpg) no-repeat;
+}
+.mid .lf img{
+	margin: 40px 0 0 218px;
+}
+.mid .lf ul{
+	margin: 54px 0 40px 0;
+}
+.mid .lf ul li{
+	width: 500px;
+	height: 48px;
+	border-bottom: 1px dashed #e0e1e5;
+	line-height: 48px;
+	font-size: 14px;
+	color:#444866;
+}
+.mid .lf ul li span{
+	font-size: 14px;
+	color: #d9cccf;
+}
+
+.mid .rig{
+	float: left;
+	width: 500px;
+	height: 314px;
+	margin: 52px 0 0 -50px;
+	background: url(../images/home/byhrbg3.jpg) no-repeat;
+}
+.mid .rig .img1{
+	margin: 38px 0 0 74px;
+}
+.mid .rig .img2{
+	margin: 0px 0 16px 30px;
+}
+.mid ul {
+	width: 326px;
+	height: 176px;
+	color: #f2ffff;
+	/*border: 1px solid #000;*/
+	margin: 12px 0 0 10px;
+	padding-left: 18px;
+}
+.mid .rig ul p{
+	font-size: 18px;
+	font-weight: 2px;
+}
+.mid .rig ul li{
+	font-size: 14px;
+	width: 312px;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #f2ffff;
+}
+.mid .rig ul li a{
+	color: #fff;
+}
+.footer{
+	float: left;
+	margin:0 auto;
+	width:1248px; 
+	height:90px;
+	font-size: 12px;
+	color: #6c6e7e;
+	background: #191d3a;
+}
+.footer .what{
+	line-height: 90px;
+	margin: 0 0 0 0;
+}
+.footer .tap{
+	float: left;
+	margin: 0 0 0 156px;
+}
+.footer .copy{
+	float: left;
+	margin: 0 0 0 160px;
+}
+.footer .what img{
+	width: 38px;
+	height: 48px;
+	margin: 10px 0 18px 0;
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--整合spring不用-->
+    <!--<environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/logistics_manager_system"/>
+                <property name="username" value="root"/>
+                <property name="password" value="hong"/>
+            </dataSource>
+        </environment>
+    </environments>-->
+
+    <!--全局setting配置：二级缓存，延迟加载-->
+
+    <!--配置别名-->
+    <typeAliases>
+        <!--批量扫描别名-->
+        <package name="entity"/>
+    </typeAliases>
+    <!--由于使用spring和mybaits的整合包进行mapper扫描，这里不用配置-->
+   <!-- <mappers>
+        <mapper resource="testMapper.pojo/userMapper.xml"/>
+    </mappers>-->
+</configuration>

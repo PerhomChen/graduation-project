@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<style>
+    [v-clock]{
+        display:none;
+    }
+</style>
+   <div id="app">
+       <p v-clock>{{ msg }}</p>
+       <div v-html="msg2"></div>
+       <!--数据绑定-->
+      <!-- <input type="button" value="展示" v-bind:title="title">-->
+       <!--v-on：绑定事件的指令   ，click:鼠标点击事件-->
+       <input type="button" value="展示" v-on:click="show">
+     <!--  <input type="button" value="hello" v-on:mouseover="show">-->
+   </div>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            msg:'this is Vue!!',
+            msg2:' <h4>解析html</h4>',
+            title:'小提示'
+        },
+        methods:{
+            show:function () {
+                alert('hello')
+            }
+        }
+    })
+</script>
+</body>
+</html>
